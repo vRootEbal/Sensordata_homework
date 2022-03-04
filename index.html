@@ -23,31 +23,50 @@
     <script>
       // Assign the specification to a local variable vlSpec.
       var vlSpec = {
-            			
-              {
-
-                  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-
-                  "data": {"url": "https://raw.githubusercontent.com/Maplub/AirQualityData/master/PM10_2018_daily.csv"},
-
-                  "mark": "line",
-
-                  "encoding": {
-
-                            "x": {"timeUnit":"day","field": "time", "type": "temporal"},
-
-                            "y": {"aggregate":"mean","field": "pm10", "type": "quantitative"}
-
-                  }
-                  "color": {
-                      "field": "temp_max",
-                      "aggregate": "max",
-                      "type": "quantitative",
-                      "legend": {
-                          "title": null
-                      }
-                  }
-              }
+            		{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+      "url": "https://raw.githubusercontent.com/Maplub/AirQualityData/master/PM10_2018_daily.csv"
+  },
+  "title": "PM 2.5 from CU SENSOR",
+  "config": {
+      "view": {
+          "strokeWidth": 0,
+          "step": 13
+      },
+      "axis": {
+          "domain": false
+      }
+  },
+  "mark": "rect",
+  "encoding": {
+      "y": {
+          "field": "time",
+          "timeUnit": "month",
+          "type": "temporal",
+          "title": "month",
+          "axis": {
+              "labelAngle": 0,
+              
+          }
+      },
+      "x": {
+          "field": "id 2",
+          "type": "nominal",
+          "title": "sensor"
+      },
+      "color": {
+          "field": "pm10",
+          "aggregate": "mean",
+          "type": "quantitative",
+          "legend": {
+              "title": null
+          }
+      }
+  }
+}
+	
+             
             }
 
       
