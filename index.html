@@ -16,56 +16,36 @@
     </style>
   </head>
   <body>
-    <h1>Template for Embedding Vega-Lite Visualization</h1>
+    <h1>PM 2.5 Sensor Data</h1>
+    <h2>Presented by Thepchai Srinoi </h2>
     <!-- Container for the visualization -->
     <div id="vis"></div>
 
     <script>
       // Assign the specification to a local variable vlSpec.
       var vlSpec = {
-            		{
-  				"$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-				  "data": {
-				      "url": "https://raw.githubusercontent.com/Maplub/AirQualityData/master/PM10_2018_daily.csv"
-				  },
-				  "title": "PM 2.5 from CU SENSOR",
-				  "config": {
-				      "view": {
-					  "strokeWidth": 0,
-					  "step": 13
-				      },
-				      "axis": {
-					  "domain": false
-				      }
-				  },
-  				"mark": "rect",
-				  "encoding": {
-				      "y": {
-					  "field": "time",
-					  "timeUnit": "month",
-					  "type": "temporal",
-					  "title": "month",
-					  "axis": {
-					      "labelAngle": 0,
-
-					  }
-				      },
-				      "x": {
-					  "field": "id 2",
-					  "type": "nominal",
-					  "title": "sensor"
-				      },
-				      "color": {
-					  "field": "pm10",
-					  "aggregate": "mean",
-					  "type": "quantitative",
-					  "legend": {
-					      "title": null
-					  }
-				      }
-				  }
-			} 
+        $schema: 'https://vega.github.io/schema/vega-lite/v4.json',
+        data: {
+          "url" : "https://raw.githubusercontent.com/Maplub/AirQualityData/master/PM10_2018_daily.csv"
+        },
+        "title" : "PM 2.5 SENSOR DATA",
+        "config": {
+            "view": {
+                "strokeWidth": 0,
+                "step": 13
+            },
+            "axis": {
+                "domain": false
             }
+        },
+        mark: 'rect',
+        encoding: {
+          y: {field: 'time', timeUnit: "month", type: 'temporal', title: "month", axis : {'labelAngle':0}},
+          x: {field: 'id 2', type: 'nominal', title: "pm 2.5 sensor"},
+          color : {field: 'pm10', aggregate : "mean", type: 'quantitative', "legend" : {"title":null}},
+        }
+      };
+      
 
       // Embed the visualization in the container with id `vis`
       vegaEmbed('#vis', vlSpec);
